@@ -3,7 +3,7 @@ import { WithdrawForm } from '../components/Molecules/WithdrawForm'
 import { ClaimRewardForm } from '../components/Molecules/ClaimRewardForm'
 
 
-import  BGStyle  from '../components/Pattern/BGStyle'
+import BGStyle from '../components/Pattern/BGStyle'
 
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
@@ -15,8 +15,8 @@ function classNames(...classes) {
 export function StakePool() {
     let [categories] = useState([
         "Stake Token",
-        "Withdraw Token",
-        "Claim Reward"
+        "Claim Reward",
+        "Withdraw Token"
     ])
 
     return (
@@ -44,8 +44,8 @@ export function StakePool() {
 
                 <Tab.Panels className="mt-2">
                     <Tab.Panel><StakeForm /></Tab.Panel>
-                    <Tab.Panel><WithdrawForm /></Tab.Panel>
                     <Tab.Panel><ClaimRewardForm /></Tab.Panel>
+                    <Tab.Panel><WithdrawForm /></Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
         </div>
