@@ -29,7 +29,6 @@ export const DisplayCard = ({ contractAddress }) => {
             // }
         ],
         onSuccess(data) {
-            console.log(data)
             setCardData(data)
         }
     })
