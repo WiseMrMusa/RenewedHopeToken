@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
+
+export const ContractContext = createContext();
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ContractContext.Provider value={"0xccF6772F52D007E082bF4A01757C4091F5f4dD92"}>
+      <App />
+    </ContractContext.Provider>
   </React.StrictMode>
 );
 
