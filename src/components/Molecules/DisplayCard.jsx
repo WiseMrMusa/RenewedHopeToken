@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
 import { erc20ABI, useContractReads } from 'wagmi'
-// import { ContractContext } from '../..';
+import { useContext , useState } from 'react'
+import { ContractContext } from '../..';
+
 
 export const DisplayCard = ({ contractAddress }) => {
 
-    // const contract = useContext(ContractContext);
+    const [cardData, setCardData] = useState([]);
 
-    const { data: cardData } = useContractReads({
+    const contract = useContext(ContractContext);
+
+    useContractReads({
         contracts: [
             {
                 address: contractAddress,
@@ -22,14 +25,15 @@ export const DisplayCard = ({ contractAddress }) => {
             //     address: contractAddress,
             //     abi: erc20ABI,
             //     functionName: 'balanceOf',
-            //     // args: ['0xA0Cf798816D4b9b9866b5330EEa46a18382f251e']
-            //     arg: ['0xccF6772F52D007E082bF4A01757C4091F5f4dD92'],
-            //     onError(error) {
-            //         console.log('Error', error)
-            //     },
+            //     args: [contract]
             // }
-        ]
+        ],
+        onSuccess(data) {
+            console.log(data)
+            setCardData(data)
+        }
     })
+
     
     return (
         <div className="p-4 aspect-square group cursor-pointer relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5">
