@@ -12,7 +12,7 @@ export const StakeForm = () => {
     const [_contractAddress, _setContractAddress] = useState(null);
     const [tokenAmount, setTokenAmount] = useState(null);
 
-    const [_allowance, _setAllowance] = useState(0);
+    const [_allowance, _setAllowance] = useState(null);
 
     useContractRead({
         address: _contractAddress,
@@ -20,7 +20,7 @@ export const StakeForm = () => {
         functionName: 'allowance',
         args: [msgSender, contractAddress],
         onSuccess(data) {
-            _setAllowance(data)
+            _setAllowance(Number(data))
         }
     })
 
@@ -47,25 +47,9 @@ export const StakeForm = () => {
 
 
 
-
-    // const { data: ballotName, isLoading: ballotIsLoading, isError: ballotIsError } = useContractRead({
-    //     address: "0x789b976e837d7c0fae59d4e7cbdc86a56364cb68",
-    //     abi: Ballot_Abi,
-    //     functionName: 'name'
-    // })
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
         stakeToken?.()
-
-        // setTimeout(() => {
-        //     // console.log({ name, period, tokenPerVote, contenders1, contenders2, contenders3 })
-
-        //     stakeToken?.()
-        // }, 1000)
     }
 
     const handleApprove = (e) => {
@@ -73,14 +57,6 @@ export const StakeForm = () => {
         approve?.()
     }
 
-
-    // 0x789b976e837d7c0fae59d4e7cbdc86a56364cb68
-
-    // useEffect(() => {
-    //     if (voteFactoryData) {
-    //         console.log(voteFactoryData);
-    //     }
-    // }, [voteFactoryData])
 
     return (
 
@@ -106,23 +82,19 @@ export const StakeForm = () => {
                             className="w-full shadow-inner p-2 px-4 ring-1 ring-zinc-200 rounded-md outline-none bg-zinc-50 z-50"
                         />
                     </div>
-
-                    {/* <span>{ _allowance }</span> */}
-
                     <div className="flex flex-col gap-2">
                         <label
                             className=" text-sm">Amount</label>
                         <input
                             type="number"
                             placeholder="Amount"
-                            onChange={(e) => setTokenAmount(e.target.value)}
+                            onChange={(e) => setTokenAmount(Number(e.target.value))}
                             className="w-full shadow-inner p-2 px-4 ring-1 ring-zinc-200 rounded-md outline-none bg-zinc-50 z-50"
                         />
                     </div>
 
                 </div>
             </div>
-
             <button onClick={_allowance >= tokenAmount ? handleSubmit : handleApprove} type="submit" className="w-full bg-zinc-800 text-white rounded-md p-2 hover:bg-zinc-900 z-50">{_allowance >= tokenAmount ? "Stake Token" : "Approve Token"}</button>
         </form>
     )
