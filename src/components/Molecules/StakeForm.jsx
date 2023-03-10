@@ -5,7 +5,7 @@ import stakingABI from '../../utils/abi/StakingABI.json'
 
 export const StakeForm = () => {
 
-    const { address:msgSender } = useAccount();
+    const { address: msgSender } = useAccount();
 
     const contractAddress = "0xccF6772F52D007E082bF4A01757C4091F5f4dD92";
 
@@ -18,12 +18,12 @@ export const StakeForm = () => {
         address: _contractAddress,
         abi: erc20ABI,
         functionName: 'allowance',
-        args: [msgSender,contractAddress],
+        args: [msgSender, contractAddress],
         onSuccess(data) {
             _setAllowance(data)
         }
     })
-    
+
     const { config: approveConfig } = usePrepareContractWrite({
         address: _contractAddress,
         abi: erc20ABI,
@@ -32,7 +32,7 @@ export const StakeForm = () => {
             contractAddress, tokenAmount
         ],
     });
-    
+
     const { config: stakeConfig } = usePrepareContractWrite({
         address: contractAddress,
         abi: stakingABI,
@@ -107,6 +107,8 @@ export const StakeForm = () => {
                         />
                     </div>
 
+                    {/* <span>{ _allowance }</span> */}
+
                     <div className="flex flex-col gap-2">
                         <label
                             className=" text-sm">Amount</label>
@@ -121,7 +123,7 @@ export const StakeForm = () => {
                 </div>
             </div>
 
-            <button onClick={_allowance >= tokenAmount ? handleSubmit : handleApprove} type="submit" className="w-full bg-zinc-800 text-white rounded-md p-2 hover:bg-zinc-900 z-50">{ _allowance >= tokenAmount ? "Stake Token" : "Approve Token"}</button>
+            <button onClick={_allowance >= tokenAmount ? handleSubmit : handleApprove} type="submit" className="w-full bg-zinc-800 text-white rounded-md p-2 hover:bg-zinc-900 z-50">{_allowance >= tokenAmount ? "Stake Token" : "Approve Token"}</button>
         </form>
     )
 
