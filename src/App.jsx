@@ -15,6 +15,7 @@ import { Token } from './pages/Token';
 import { Portfolio } from './pages/Portfolio';
 import { Ethers } from './pages/Ethers';
 import { NewDashboard } from './pages/NewDashboard';
+import { StakeForm } from './components/Molecules/StakeForm';
 
 const chains = [goerli, sepolia];
 
@@ -42,7 +43,7 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Ethers />} />
+              <Route index element={<StakeForm />} />
               <Route path="/token" element={<TokenDashboard />} />
               <Route path="/pool" element={<StakePool />} />
               <Route path="/dashboard" element={<NewDashboard />} />
