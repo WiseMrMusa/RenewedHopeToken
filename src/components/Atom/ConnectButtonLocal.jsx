@@ -15,7 +15,7 @@ export const MyConnectButton = () => {
                     <button
                         onClick={show}
                         className='inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition rounded-full bg-zinc-900 py-1 px-3 text-white hover:bg-zinc-700 h-fit'>
-                        {isConnected ? address : "Connect Wallet"}
+                        {isConnected ? `${address.slice(0,8)}...${address.slice(-4)}` : "Connect Wallet"}
                     </button>
                 );
             }}

@@ -23,7 +23,7 @@ export function StakePool() {
         <div className=" px-2 py-16 sm:px-0">
             <BGStyle />
             <Tab.Group>
-                <Tab.List className="flex space-x-1  bg-teal-900/20 p-1">
+                <Tab.List className="flex space-x-1 bg-emerald-100/20 rounded-lg ring-1 ring-emerald-500  p-1">
                     {categories.map((category) => (
                         <Tab
                             key={category}
@@ -32,8 +32,8 @@ export function StakePool() {
                                     'w-full  py-2.5 text-sm font-medium leading-5 text-teal-700',
                                     'ring-white ring-opacity-60 ring-offset-2 focus:outline-none focus:ring-2',
                                     selected
-                                        ? 'bg-white shadow'
-                                        : 'text-teal-600 hover:bg-white/[0.12] hover:text-white'
+                                        ? 'bg-emerald-900 rounded-lg text-white shadow'
+                                        : 'text-teal-600 hover:bg-white/[0.12] hover:text-emerald-900'
                                 )
                             }
                         >

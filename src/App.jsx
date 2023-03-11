@@ -43,7 +43,7 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<StakeForm />} />
+              <Route index element={<Home />} />
               <Route path="/token" element={<TokenDashboard />} />
               <Route path="/pool" element={<StakePool />} />
               <Route path="/dashboard" element={<NewDashboard />} />
